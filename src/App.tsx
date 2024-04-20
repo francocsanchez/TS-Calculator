@@ -6,7 +6,7 @@ import useOrder from "./hooks/useOrder";
 import OrderList from "./components/OrderList";
 
 function App() {
-  const { handleAddItem,handleRemoveItem, order } = useOrder();
+  const { handleAddItem, handleRemoveItem, order, tip, setTip, saveOrder } = useOrder();
   return (
     <>
       <header className=" bg-teal-400 py-5">
@@ -33,7 +33,7 @@ function App() {
             ${order.length ? "p-4 " : ""}
             border border-dashed border-slate-300 rounded-lg space-y-10 `}
         >
-          <OrderList order={order} handleRemoveItem={handleRemoveItem} />
+          <OrderList order={order} handleRemoveItem={handleRemoveItem} setTip={setTip} tip={tip} saveOrder={saveOrder}/>
         </div>
       </main>
     </>

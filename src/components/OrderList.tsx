@@ -1,13 +1,25 @@
+import { Dispatch, SetStateAction } from "react";
+
 import { MenuItems, OrderItem } from "../types";
 import { formatCurrency } from "../helpers";
+
 import TotalLists from "./TotalLists";
 import SubTotalList from "./SubTotalList";
 
 type OrderListProps = {
   order: OrderItem[];
   handleRemoveItem: (id: MenuItems["id"]) => void;
+  setTip: Dispatch<SetStateAction<number>>;
+  tip: number;
+  saveOrder: () => void;
 };
-export default function OrderList({ order, handleRemoveItem }: OrderListProps) {
+export default function OrderList({
+  order,
+  handleRemoveItem,
+  setTip,
+  tip,
+  saveOrder
+}: OrderListProps) {
   return (
     <div
       className={
@@ -16,7 +28,7 @@ export default function OrderList({ order, handleRemoveItem }: OrderListProps) {
     >
       {order.length ? (
         <>
-          <TotalLists order={order} />
+          <TotalLists order={order} tip={tip} />
 
           {order.map((item) => (
             <div
@@ -40,7 +52,7 @@ export default function OrderList({ order, handleRemoveItem }: OrderListProps) {
               </button>
             </div>
           ))}
-          <SubTotalList order={order}/>
+          <SubTotalList order={order} setTip={setTip} saveOrder={saveOrder}/>
         </>
       ) : (
         <div className="text-center  font-bold text-2xl text-gray-400">
