@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { Dispatch } from "react";
 import { CalculatorAction, CalculatorState } from "../reducers/calculator-reducers";
 
 const tipOptions = [
